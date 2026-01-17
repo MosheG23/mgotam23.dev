@@ -280,6 +280,91 @@ CMD ["npm", "start"]
     },
   },
   {
+    slug: "urgent-security-update-cve-2025-66478",
+    date: "Jan 18, 2026",
+    readTime: "4 min read",
+    author: "Moshe Gotam",
+    content: {
+      en: {
+        title: "Critical Security Update: Addressing CVE-2025-66478 in Next.js",
+        excerpt:
+          "A critical Remote Code Execution (RCE) vulnerability has been discovered in Next.js. Learn about the impact, the technical details, and why upgrading immediately is crucial.",
+        fullContent: `
+                <h2 class="text-white text-2xl font-bold mt-8 mb-4">The Incident</h2>
+                <p class="mb-4">Security is a moving target. Today, we're addressing <strong>CVE-2025-66478</strong>, a critical Remote Code Execution (RCE) vulnerability affecting Next.js applications. This isn't just a minor patch; it's a "drop everything and update" situation.</p>
+
+                <figure class="my-8">
+                  <div class="bg-gray-800 rounded-lg overflow-hidden border border-gray-700 shadow-2xl">
+                    <img
+                      class="w-full h-auto object-cover"
+                      src="/blog-post/cve-2025-66478/security_patch.png"
+                      alt="Abstract visualization of a security patch securing a system"
+                    />
+                  </div>
+                  <figcaption class="text-center text-sm text-gray-400 mt-2">Securing the perimeter: Immediate patching is required.</figcaption>
+                </figure>
+
+                <h2 class="text-white text-2xl font-bold mt-8 mb-4">Background</h2>
+                <p class="mb-4">The vulnerability stems from unsafe deserialization in the React Server Components (RSC) protocol. In simple terms, an attacker could craft a specific HTTP payload—often involving the <code>Next-Action</code> header—that tricks the server into executing arbitrary code. This happens before authentication, meaning your server is exposed to the public internet.</p>
+                <div class="bg-red-900/20 border-l-4 border-red-500 p-4 mb-6">
+                    <h4 class="text-red-400 font-bold mb-2">⚠️ Severity: CRITICAL (CVSS 10.0)</h4>
+                    <p class="text-sm text-gray-300">This allows unauthenticated attackers to take full control of the server environment, potentially leaking environment variables, secrets, and source code.</p>
+                </div>
+
+                <h2 class="text-white text-2xl font-bold mt-8 mb-4">Affected Versions</h2>
+                <ul class="list-disc pl-5 mb-4 text-gray-300">
+                    <li class="mb-2"><strong>Next.js 15.x:</strong> All versions</li>
+                    <li class="mb-2"><strong>Next.js 16.x:</strong> All versions prior to the patch</li>
+                    <li class="mb-2"><strong>Next.js 14 Canary:</strong> Versions after 14.3.0-canary.76</li>
+                </ul>
+
+                <h2 class="text-white text-2xl font-bold mt-8 mb-4">The Solution</h2>
+                <p class="mb-4">The fix is straightforward but mandatory. We have already patched this application.</p>
+                <h3 class="text-white text-xl font-bold mt-6 mb-4">1. Upgrade Next.js</h3>
+                <p class="mb-4">You must upgrade to <strong>Next.js 16.1.3</strong> (or 15.0.5+ if you are locked to v15). This version includes the fix for the deserialization issue.</p>
+                <pre class="bg-gray-900 text-white p-4 rounded-md overflow-x-auto mb-4"><code class="language-bash">npm install next@latest react@latest react-dom@latest</code></pre>
+                
+                <h3 class="text-white text-xl font-bold mt-6 mb-4">2. Audit Your Secrets</h3>
+                <p class="mb-4">Since this was an RCE vulnerability, if you were running a vulnerable version on the public we, it is best practice to rotate your production secrets (API keys, database credentials) as a precaution.</p>
+
+                <h2 class="text-white text-2xl font-bold mt-8 mb-4">Looking Forward</h2>
+                <p class="mb-4">Vulnerabilities like this highlight the importance of staying current. This blog itself is running on the patched version, ensuring that we practice what we preach. Stay safe, stay updated.</p>
+            `,
+      },
+      he: {
+        title: "עדכון אבטחה קריטי: CVE-2025-66478 ב-Next.js",
+        excerpt:
+          "נחשפה חולשת הרצת קוד מרחוק (RCE) קריטית ב-Next.js. למדו על ההשפעה וכיצד לשדרג מיד.",
+        fullContent: `
+                <h2 class="text-white text-2xl font-bold mt-8 mb-4">האירוע</h2>
+                <p class="mb-4">אבטחת מידע היא יעד נע. היום אנו מטפלים ב-<strong>CVE-2025-66478</strong>, חולשת RCE קריטית המשפיעה על אפליקציות Next.js. זהו לא עדכון שגרתי; זהו מצב של "עזבו הכל ושדרגו".</p>
+
+                <figure class="my-8">
+                  <div class="bg-gray-800 rounded-lg overflow-hidden border border-gray-700 shadow-2xl">
+                    <img
+                      class="w-full h-auto object-cover"
+                      src="/blog-post/cve-2025-66478/security_patch.png"
+                      alt="אילוסטרציה של טלאי אבטחה"
+                    />
+                  </div>
+                </figure>
+
+                <h2 class="text-white text-2xl font-bold mt-8 mb-4">הרקע</h2>
+                <p class="mb-4">החולשה נובעת מבעיית דסריאליזציה (deserialization) לא בטוחה בפרוטוקול React Server Components (RSC). תוקף יכול לשלוח בקשת HTTP זדונית שתגרום לשרת להריץ קוד זדוני, וזאת ללא צורך בהזדהות.</p>
+                
+                <div class="bg-red-900/20 border-l-4 border-red-500 p-4 mb-6">
+                    <h4 class="text-red-400 font-bold mb-2">⚠️ חומרה: קריטית (CVSS 10.0)</h4>
+                    <p class="text-sm text-gray-300">מאפשר לתוקפים להשתלט מרחוק על השרת ולגנוב מידע רגיש.</p>
+                </div>
+
+                <h2 class="text-white text-2xl font-bold mt-8 mb-4">השפעה ופתרון</h2>
+                <p class="mb-4">הגרסאות המושפעות כוללות את Next.js 15.x ו-16.x. הפתרון הוא שדרוג מיידי לגרסה <strong>16.1.3</strong> ומעלה.</p>
+                <p class="mb-4">דאגנו כבר לשדרג את האפליקציה הזו לגרסה הבטוחה ביותר.</p>
+            `,
+      },
+    },
+  },
+  {
     slug: "antigravity-mcp-guide",
     date: "Jan 17, 2026",
     readTime: "8 min read",
@@ -444,7 +529,7 @@ CMD ["npm", "start"]
       },
     },
   },
-];
+].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
 // --- Helper Function ---
 export const getPostBySlug = (slug: string): Post | undefined => {
