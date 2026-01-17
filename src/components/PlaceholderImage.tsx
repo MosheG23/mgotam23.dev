@@ -1,4 +1,4 @@
-import React, { CSSProperties } from "react";
+import React, { type CSSProperties } from "react";
 
 // Define the types for the component's props
 interface PlaceholderImageProps {
@@ -46,21 +46,21 @@ interface PlaceholderImageProps {
   mainShapeBorderColor?: string; // New: Color of the border around the main shape
   mainShapeBorderWidth?: number; // New: Width of the border around the main shape
   mainTextHorizontalAlign?: "start" | "middle" | "end"; // Horizontal alignment for main text
-  mainTextVerticalAlign?: 
-            | "auto"
-            | "use-script"
-            | "no-change"
-            | "reset-size"
-            | "ideographic"
-            | "alphabetic"
-            | "hanging"
-            | "mathematical"
-            | "central"
-            | "middle"
-            | "text-after-edge"
-            | "text-before-edge"
-            | "inherit"
-            | undefined; // Vertical alignment for main text
+  mainTextVerticalAlign?:
+    | "auto"
+    | "use-script"
+    | "no-change"
+    | "reset-size"
+    | "ideographic"
+    | "alphabetic"
+    | "hanging"
+    | "mathematical"
+    | "central"
+    | "middle"
+    | "text-after-edge"
+    | "text-before-edge"
+    | "inherit"
+    | undefined; // Vertical alignment for main text
   mainTextFontSize?: number; // New: Explicit font size for main text
   subTextFontSize?: number; // Font size for sub-text
   subTextPosition?: "top-left" | "top-right" | "bottom-left" | "bottom-right"; // Position for sub-text
@@ -263,7 +263,7 @@ const PlaceholderImage: React.FC<PlaceholderImageProps> = React.memo(
         case "custom-svg":
           if (!currentSvgContent) {
             console.warn(
-              "Pattern 'custom-svg' selected but no 'svgContent' provided. Falling back to 'none' pattern."
+              "Pattern 'custom-svg' selected but no 'svgContent' provided. Falling back to 'none' pattern.",
             );
             return { defs: "", fill: bgColor };
           }
@@ -484,7 +484,7 @@ const PlaceholderImage: React.FC<PlaceholderImageProps> = React.memo(
         )}
       </svg>
     );
-  }
+  },
 );
 PlaceholderImage.displayName = "PlaceholderImage";
 

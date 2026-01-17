@@ -1,14 +1,14 @@
-import { ScoutingReportData } from "@/types/types";
 import {
   Award,
   ChevronRight,
   Rocket,
   Shield,
+  Trophy,
   Users,
   X,
-  Trophy,
 } from "lucide-react";
 import { useState } from "react";
+import type { ScoutingReportData } from "@/types/types";
 
 const BasketballTexture = () => (
   <svg

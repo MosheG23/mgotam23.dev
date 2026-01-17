@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from "react";
-import { CareerTimelineItem, ScoutingReportData } from "@/types/types";
 import { ExternalLink, FileText } from "lucide-react";
+import type React from "react";
+import { useEffect, useState } from "react";
+import type { CareerTimelineItem, ScoutingReportData } from "@/types/types";
 import { ScoutingReportModal } from "./ClipboardJourney.tsx/ScoutingReportModal";
 
 interface ClipboardJourneyProps {
@@ -116,7 +117,7 @@ const ClipboardJourney: React.FC<ClipboardJourneyProps> = ({
       <ScoutingReportModal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
-        data={scoutingReportData ?? {} as ScoutingReportData}
+        data={scoutingReportData ?? ({} as ScoutingReportData)}
       />
     </>
   );

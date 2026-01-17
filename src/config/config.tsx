@@ -1,5 +1,5 @@
-import { CareerTimelineItem } from "@/types/types";
 import { ClipboardList, Code2, Shield, Star } from "lucide-react";
+import type { CareerTimelineItem } from "@/types/types";
 import { fullStackTeamLeadScoutingReportData } from "./RolesData";
 
 const fullName = "Moshe Gotam";
@@ -53,8 +53,8 @@ const projects = [
       {
         src: "/projects/huddleup/tamir-blatt.png",
         alt: "Tamir Blatt Player Card.",
-      }
-    ]
+      },
+    ],
   },
   {
     title: "Full Court",
@@ -76,8 +76,8 @@ const projects = [
       {
         src: "/projects/fullcourt/sql-pres.png",
         alt: "A slideshow presentation rendered from markdown.",
-      }
-    ]
+      },
+    ],
   },
   {
     title: "Project Data Dunk",

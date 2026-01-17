@@ -96,7 +96,7 @@ export interface Project {
   demo: string;
   image: string;
   details: string[];
-  type: '3-Pointer' | 'Mid-Range' | 'In the Paint';
+  type: "3-Pointer" | "Mid-Range" | "In the Paint";
   shotPosition: { x: string; y: string };
 }
 

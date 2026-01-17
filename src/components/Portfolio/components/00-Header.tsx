@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from "react";
-import { fullName } from "@/config/config";
 import { Menu, X } from "lucide-react";
+import type React from "react";
+import { useEffect, useState } from "react";
+import { fullName } from "@/config/config";
 
 interface HeaderProps {
   sections: string[];
@@ -67,21 +68,22 @@ const Header: React.FC<HeaderProps> = ({ sections }) => {
           </div>
 
           <div className="hidden md:flex space-x-8">
-            {sections && sections.map((section) => (
-              <button
-                key={section}
-                onClick={() => scrollToSection(section)}
-                className={`capitalize transition-colors font-semibold text-sm tracking-wide ${
-                  activeSection === section
-                    ? "text-orange-500"
-                    : "text-[#F9FAFB] hover:text-orange-500 cursor-pointer"
-                }`}
-              >
-                {sectionDisplayNames.hasOwnProperty(section)
-                  ? sectionDisplayNames[section]
-                  : section}
-              </button>
-            ))}
+            {sections &&
+              sections.map((section) => (
+                <button
+                  key={section}
+                  onClick={() => scrollToSection(section)}
+                  className={`capitalize transition-colors font-semibold text-sm tracking-wide ${
+                    activeSection === section
+                      ? "text-orange-500"
+                      : "text-[#F9FAFB] hover:text-orange-500 cursor-pointer"
+                  }`}
+                >
+                  {Object.hasOwn(sectionDisplayNames, section)
+                    ? sectionDisplayNames[section]
+                    : section}
+                </button>
+              ))}
           </div>
 
           <button

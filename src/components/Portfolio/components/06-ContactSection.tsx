@@ -1,7 +1,7 @@
-import React from 'react';
-import { Mail, Linkedin, Github } from 'lucide-react';
+import { Github, Linkedin, Mail } from "lucide-react";
+import type React from "react";
 
-import { fullName, email, linkedin, github, twitter } from "@/config/config";
+import { email, fullName, github, linkedin, twitter } from "@/config/config";
 
 const ContactSection: React.FC = () => {
   return (
@@ -10,38 +10,38 @@ const ContactSection: React.FC = () => {
       className="relative bg-gradient-to-br from-slate-900 via-gray-900 to-slate-900 text-white py-20 px-6 overflow-hidden"
     >
       {/* Field Pattern Background */}
-      <div 
+      <div
         className="absolute inset-0 opacity-20"
         style={{
           backgroundImage: `
             linear-gradient(90deg, rgba(34, 197, 94, 0.03) 1px, transparent 1px),
             linear-gradient(rgba(34, 197, 94, 0.03) 1px, transparent 1px)
           `,
-          backgroundSize: '50px 50px'
+          backgroundSize: "50px 50px",
         }}
       />
-      
+
       {/* Gradient Orb (Soccer Ball Glow) */}
-      <div 
+      <div
         className="absolute top-20 right-10 md:right-20 w-96 h-96 animate-pulse"
         style={{
           background: `radial-gradient(circle at 30% 30%, 
             rgba(34, 197, 94, 0.8), 
             rgba(34, 197, 94, 0.4) 40%, 
             transparent 70%)`,
-          filter: 'blur(60px)',
-          animation: 'float 6s ease-in-out infinite'
+          filter: "blur(60px)",
+          animation: "float 6s ease-in-out infinite",
         }}
       />
-      
+
       {/* Soccer Ball Icon */}
-      <div 
+      <div
         className="absolute top-32 right-16 md:right-32 text-8xl opacity-10"
-        style={{ animation: 'float 6s ease-in-out infinite' }}
+        style={{ animation: "float 6s ease-in-out infinite" }}
       >
         🏀
       </div>
-      
+
       <div className="relative max-w-6xl mx-auto grid md:grid-cols-2 gap-12">
         {/* Left Column - Main Heading */}
         <div>
@@ -51,24 +51,24 @@ const ContactSection: React.FC = () => {
               the court.
             </span>
           </h2>
-          
+
           {/* Dot Pattern (like stadium lights) */}
           <div className="grid grid-cols-12 gap-2 mt-8 opacity-30">
             {[...Array(12)].map((_, i) => (
               <div
                 key={i}
                 className={`w-1 h-1 rounded-full ${
-                  i % 3 === 0 ? 'bg-green-400' : 'bg-white'
+                  i % 3 === 0 ? "bg-green-400" : "bg-white"
                 }`}
               />
             ))}
           </div>
         </div>
-        
+
         {/* Right Column - Contact Info */}
         <div className="space-y-8 flex flex-col justify-center">
           {/* Email */}
-          <a 
+          <a
             href={`mailto:${email}`}
             className="flex items-start gap-4 group cursor-pointer hover:translate-x-2 transition-transform"
           >
@@ -82,9 +82,9 @@ const ContactSection: React.FC = () => {
               </p>
             </div>
           </a>
-          
+
           {/* LinkedIn */}
-          <a 
+          <a
             href={linkedin}
             target="_blank"
             rel="noopener noreferrer"
@@ -94,15 +94,17 @@ const ContactSection: React.FC = () => {
               <Linkedin className="w-5 h-5 text-gray-400 group-hover:text-green-400 transition-colors" />
             </div>
             <div>
-              <h3 className="text-xl font-semibold mb-1">Catch Me on LinkedIn</h3>
+              <h3 className="text-xl font-semibold mb-1">
+                Catch Me on LinkedIn
+              </h3>
               <p className="text-gray-400 group-hover:text-green-300 transition-colors">
                 LinkedIn Profile
               </p>
             </div>
           </a>
-          
+
           {/* GitHub */}
-          <a 
+          <a
             href={github}
             target="_blank"
             rel="noopener noreferrer"
@@ -120,7 +122,7 @@ const ContactSection: React.FC = () => {
           </a>
         </div>
       </div>
-      
+
       {/* Add keyframes for float animation */}
       <style jsx>{`
         @keyframes float {

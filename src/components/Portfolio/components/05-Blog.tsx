@@ -1,7 +1,14 @@
-import PlaceholderImage from "@/components/PlaceholderImage";
-import { flexibleBlogPosts, getPostContent, Language, Post, postSectionHeader } from "@/lib/posts";
 import { ExternalLink } from "lucide-react";
-import React, { useState } from "react";
+import type React from "react";
+import { useState } from "react";
+import PlaceholderImage from "@/components/PlaceholderImage";
+import {
+  flexibleBlogPosts,
+  getPostContent,
+  type Language,
+  type Post,
+  postSectionHeader,
+} from "@/lib/posts";
 
 // --- Reusable Blog Post Card Component ---
 interface BlogPostCardProps {
@@ -14,12 +21,12 @@ const BlogPostCard: React.FC<BlogPostCardProps> = ({
 }) => {
   // Each card manages its own language state, defaulting to English.
   const [preferredLanguage, setPreferredLanguage] = useState<Language>(
-    post.content.en ? "en" : post.content.he ? "he" : "en"
+    post.content.en ? "en" : post.content.he ? "he" : "en",
   );
 
   const { content, language, isPreferred } = getPostContent(
     post,
-    preferredLanguage
+    preferredLanguage,
   );
   const direction = preferredLanguage === "he" ? "rtl" : "ltr";
 
@@ -161,14 +168,15 @@ const BlogPostCard: React.FC<BlogPostCardProps> = ({
 };
 
 const BlogHeader: React.FC = () => {
-    const { title, subtitle } = postSectionHeader;
+  const { title, subtitle } = postSectionHeader;
   return (
     <div className="text-center mb-12">
       <h2 className="text-4xl md:text-5xl font-bold mb-4 text-center font-heading tracking-wide text-white">
         {title || "My Playbook"}
       </h2>
       <p className="text-center text-gray-400 max-w-2xl mx-auto">
-        {subtitle || "Breaking down the X's and O's of software development, team strategy, and high-performance engineering."}
+        {subtitle ||
+          "Breaking down the X's and O's of software development, team strategy, and high-performance engineering."}
       </p>
     </div>
   );

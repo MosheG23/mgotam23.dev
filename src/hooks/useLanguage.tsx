@@ -1,7 +1,7 @@
-import { createContext, useContext, useState, useEffect } from 'react';
+import { createContext, useContext, useEffect, useState } from "react";
 
-export type SupportedLanguage = 'en' | 'he';
-export type TextDirection = 'ltr' | 'rtl';
+export type SupportedLanguage = "en" | "he";
+export type TextDirection = "ltr" | "rtl";
 
 interface LanguageContextType {
   language: SupportedLanguage;
@@ -9,17 +9,22 @@ interface LanguageContextType {
   dir: TextDirection;
 }
 
-const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
+const LanguageContext = createContext<LanguageContextType | undefined>(
+  undefined,
+);
 
 export const useLanguage = () => {
   const context = useContext(LanguageContext);
-  if (!context) throw new Error('useLanguage must be used within LanguageProvider');
+  if (!context)
+    throw new Error("useLanguage must be used within LanguageProvider");
   return context;
 };
 
-export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [language, setLanguageState] = useState<SupportedLanguage>('en');
-  const dir: TextDirection = language === 'he' ? 'rtl' : 'ltr';
+export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({
+  children,
+}) => {
+  const [language, setLanguageState] = useState<SupportedLanguage>("en");
+  const dir: TextDirection = language === "he" ? "rtl" : "ltr";
 
   useEffect(() => {
     document.documentElement.dir = dir;
@@ -27,7 +32,9 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
   }, [language, dir]);
 
   return (
-    <LanguageContext.Provider value={{ language, setLanguage: setLanguageState, dir }}>
+    <LanguageContext.Provider
+      value={{ language, setLanguage: setLanguageState, dir }}
+    >
       {children}
     </LanguageContext.Provider>
   );

@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from "react";
-import { fullName, jobTitle } from "@/config/config";
 import { ChevronDown } from "lucide-react";
+import type React from "react";
+import { useEffect, useState } from "react";
+import { fullName, jobTitle } from "@/config/config";
 
 const Hero: React.FC = () => {
   const [typedText, setTypedText] = useState("");

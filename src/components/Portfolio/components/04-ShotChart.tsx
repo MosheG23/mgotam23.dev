@@ -1,15 +1,20 @@
+import type React from "react";
+import { useEffect, useState } from "react";
 import { ProjectModal } from "@/components/ProjectModal";
 import { projects } from "@/config/config";
-import React, { useState, useEffect } from "react";
 
 interface HandleEscEvent extends KeyboardEvent {
   key: string;
 }
 
 const ShotChart: React.FC = () => {
-  const [hoveredShot, setHoveredShot] = useState<typeof projects[number] | null>(null);
+  const [hoveredShot, setHoveredShot] = useState<
+    (typeof projects)[number] | null
+  >(null);
 
-  const [selectedProject, setSelectedProject] = useState<typeof projects[number] | null>(null);
+  const [selectedProject, setSelectedProject] = useState<
+    (typeof projects)[number] | null
+  >(null);
 
   // Close modal on 'Escape' key press
   useEffect(() => {
@@ -23,7 +28,7 @@ const ShotChart: React.FC = () => {
   }, []);
 
   type ShotType = "3-Pointer" | "Mid-Range" | "In the Paint";
-  
+
   const shotStyles: Record<ShotType, string> = {
     "3-Pointer": "fill-orange-400",
     "Mid-Range": "fill-orange-500",
@@ -131,8 +136,13 @@ const ShotChart: React.FC = () => {
               />
               {projects.map((project, index) => {
                 const xPosPercent = parseFloat(project.shotPosition.x);
-                let textAnchor: "inherit" | "middle" | "start" | "end" | undefined = "middle";
-                let textX = project.shotPosition.x;
+                let textAnchor:
+                  | "inherit"
+                  | "middle"
+                  | "start"
+                  | "end"
+                  | undefined = "middle";
+                const textX = project.shotPosition.x;
 
                 if (xPosPercent < 15) {
                   textAnchor = "start";
